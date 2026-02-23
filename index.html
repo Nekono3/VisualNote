@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="VisualNote — A gesture-controlled web interface using real-time hand tracking. Interact with digital elements using natural hand gestures." />
+    <title>VisualNote — Gesture-Controlled Interface</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-ring">
+                <div class="ring-segment"></div>
+                <div class="ring-segment"></div>
+                <div class="ring-segment"></div>
+            </div>
+            <h1 class="loader-title">VisualNote</h1>
+            <p class="loader-status" id="loading-status">Initializing camera...</p>
+        </div>
+    </div>
+
+    <!-- Permission Denied Screen -->
+    <div id="error-screen" class="hidden">
+        <div class="error-content">
+            <div class="error-icon">🎥</div>
+            <h2>Camera Access Required</h2>
+            <p id="error-message">Please allow camera access to use VisualNote.</p>
+            <button id="retry-btn" class="retry-button">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Hidden video element for webcam feed -->
+    <video id="webcam" autoplay playsinline></video>
+
+    <!-- Main canvas overlay -->
+    <canvas id="output-canvas"></canvas>
+
+    <!-- Note Text Editor Overlay -->
+    <div id="note-editor" class="note-editor hidden">
+        <textarea id="note-editor-textarea" placeholder="Type your note..."></textarea>
+        <div class="note-editor-hint">Press Escape or click outside to save</div>
+    </div>
+
+    <!-- FPS Counter -->
+    <div id="fps-counter">-- FPS</div>
+
+    <!-- MediaPipe Scripts (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- App Modules -->
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
