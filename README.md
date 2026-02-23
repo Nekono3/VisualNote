@@ -34,21 +34,15 @@ The system runs entirely in the browser.
 - Multi-selection support
 - Editable text inside notes
 
----
-
 ### 🔗 Linking System
 - Connect notes with dynamic lines
 - Links update automatically when notes move
 - Remove links anytime
 
----
-
 ### 🔍 Zoom & Pan (Two-Hand Support)
 - Two-hand pinch to zoom in/out
 - Two-hand movement to pan workspace
 - Smooth infinite canvas navigation
-
----
 
 ### 🖐 Gesture Interaction
 - Index finger acts as virtual cursor
@@ -74,8 +68,105 @@ When clicking **Download → Export as PNG**:
 - No UI overlays
 - Automatically cropped to fit notes
 
-This ensures a clean, professional export.
+This ensures a clean and professional export.
 
 ---
 
 ## 🏗 Architecture
+
+Camera Layer  
+↓  
+Vision Layer (Multi-Hand Tracking)  
+↓  
+Gesture Engine  
+↓  
+Workspace Engine  
+↓  
+Canvas Render Engine  
+↓  
+HTML Editor Overlay (for typing)  
+↓  
+Export Manager  
+
+---
+
+## 🧩 Data Model
+
+### Note Structure
+
+```js
+{
+  id: string,
+  x: number,        // world coordinate
+  y: number,
+  width: number,
+  height: number,
+  text: string
+}
+```
+
+### Link Structure
+
+```js
+{
+  id: string,
+  from: noteId,
+  to: noteId
+}
+```
+
+### Workspace State
+
+```js
+{
+  zoom: number,
+  offsetX: number,
+  offsetY: number
+}
+```
+
+---
+
+## ⚡ Performance Principles
+
+- 60 FPS rendering loop
+- requestAnimationFrame-based updates
+- No React re-render per frame
+- World-to-screen coordinate transformation
+- Landmark smoothing to reduce jitter
+- Modular gesture state machine
+
+---
+
+## 🛠 Tech Stack
+
+- React + Vite
+- MediaPipe (Hand Tracking)
+- HTML5 Canvas
+- Gesture Classification Engine
+- Blob-based PNG export
+
+---
+
+## 🧪 Roadmap
+
+- [ ] Cloud save
+- [ ] Import project files
+- [ ] Real-time collaboration
+- [ ] AI auto-link suggestions
+- [ ] Multi-board system
+- [ ] Touchscreen fallback mode
+
+---
+
+## 👤 Author
+
+**Nekono3 (Belek)**  
+Frontend Developer  
+Gesture Interaction & Visual Systems Enthusiast  
+
+---
+
+## 📜 License
+
+MIT License
