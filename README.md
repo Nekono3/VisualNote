@@ -55,7 +55,7 @@ flowchart TD
 
     subgraph Output["5. Clean Export Pipeline"]
         Render --> Exporter[export/export.js: Isolated PNG Renderer]
-        Exporter --> CleanPNG[Presentation-Ready PNG (No UI / No Landmarks)]
+        Exporter --> CleanPNG["Presentation-Ready PNG (No UI / No Landmarks)"]
     end
 ```
 
